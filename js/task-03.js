@@ -12,22 +12,30 @@ const images = [
     alt: "Group of Horses Running",
   },
 ];
+// первый вариант
+// const galleryListEl = document.querySelector("ul");
+
+// const elements = images.map((image) => {
+//   const galleryItemEl = document.createElement("li");
+//   // galleryItemEl.classList.add("gallery-item");
+
+//   const galleryImgEl = document.createElement("img");
+//   galleryImgEl.src = image.url;
+//   galleryImgEl.alt = image.alt;
+//   galleryImgEl.width = 320;
+//   galleryItemEl.appendChild(galleryImgEl);
+//   return galleryItemEl;
+// });
+// // console.log(elements);
+// galleryListEl.append(...elements);
 
 const galleryListEl = document.querySelector("ul");
-
-const elements = images.map((image) => {
-  const galleryItemEl = document.createElement("li");
-  // galleryItemEl.classList.add("gallery-item");
-
-  const galleryImgEl = document.createElement("img");
-  galleryImgEl.src = image.url;
-  galleryImgEl.alt = image.alt;
-  galleryImgEl.width = 320;
-  galleryItemEl.appendChild(galleryImgEl);
-  return galleryItemEl;
-});
-// console.log(elements);
-galleryListEl.append(...elements);
+const element = images
+  .map(function ({ url, alt }) {
+    return `<li><img src = '${url}' alt = '${alt}' width="320"></li>`;
+  })
+  .join("");
+galleryListEl.insertAdjacentHTML("afterbegin", element);
 
 document.body.style.margin = "0px";
 
