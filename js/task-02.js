@@ -8,10 +8,12 @@ const ingredients = [
 ];
 
 const ingredientElem = document.getElementById("ingredients");
-for (const ingredient of ingredients) {
-  const liElem = document.createElement("li");
-  liElem.textContent = ingredient;
-  liElem.classList.add("item");
-  ingredientElem.appendChild(liElem);
-}
-ingredientElem.appendChild(ingredientElem);
+
+const listRefs = ingredients.map((ingredient) => {
+  const listRef = document.createElement("li");
+  listRef.textContent = ingredient;
+  listRef.classList.add("item");
+  return listRef;
+});
+
+ingredientElem.append(...listRefs);
